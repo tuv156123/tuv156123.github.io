@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lottery</title>
+</head>
+<body>
+    <input class="need_num" value="5">樂透數字幾碼</input>
+    <input class="num_range"  value="50">樂透數字區間</input>
+    <h2>開獎號碼</h2>
+    <button class="lottery">開獎</button>
+    <input class="ans" type="text" readonly>
+
+    <script>
+        let need_num = document.querySelectorAll("input")[0];
+        let num_range = document.querySelectorAll("input")[1];
+        let ans = document.querySelectorAll("input")[2];
+        let lottery = document.querySelector(".lottery")
+        
+        let start_lottery = function() {
+            let num_arr = [];
+            for (i = 0 ; i < need_num.value; i++) {
+                let new_num = Math.floor( Math.random() * num_range.value ) + 1;
+                console.log(Math.random())
+                if(num_arr.includes(new_num)){
+                    i = i - 1;
+                    console.log(i);               
+                } else {
+                    num_arr.push(new_num);
+                    console.log(num_arr)
+                }
+            }
+            ans.value = num_arr.join(",");
+            //console.log(typeof  num_arr.join("/"))
+        }  
+        lottery.onclick = start_lottery
+    
+    </script>
+</body>
+</html>
